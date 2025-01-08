@@ -1,0 +1,25 @@
+import csv
+
+# Define the data to store
+data = [
+    ("James", "Smith", "james.smith@example.com", "password123", "01/01/1990"),
+    ("John", "Johnson", "john.johnson@example.com", "password456", "02/14/1985"),
+    ("Robert", "Williams", "robert.williams@example.com", "password789", "07/22/1980"),
+]
+
+# Define the CSV file name
+file_name = "user_data.csv"
+
+# Open the CSV file in append mode and write the data
+with open(file_name, mode="a", newline="", encoding="utf-8") as file:
+    writer = csv.writer(file)
+
+    # If the file is empty, write the header
+    if file.tell() == 0:  # Check if file is empty
+        writer.writerow(["firstName", "lastName", "Email", "Password", "Date_of_birth"])
+
+    # Write the data rows
+    for row in data:
+        writer.writerow(row)
+
+print("Data appended to CSV file successfully.")
